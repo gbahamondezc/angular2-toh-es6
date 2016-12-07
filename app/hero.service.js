@@ -4,12 +4,17 @@ import { HEROES } from './mock-heroes';
 let serviceAnnotations = new Injectable();
 
 export class HeroService {
-    getHeroes() {
+    getHeroes () {
         return new Promise((resolve, reject) => {
             setTimeout(function() {
                 resolve(HEROES);
-            }, 1000);
+            }, 0);
         });
+    }
+
+    getHero (id) {
+        return this.getHeroes()
+            .then(heroes => heroes.find(hero => hero.id === id));
     }
 }
 
