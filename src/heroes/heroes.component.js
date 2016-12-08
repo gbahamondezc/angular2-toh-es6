@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { HeroService } from './hero.service';
 
-import  { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 let componentDecorator = new Component({
-    moduleId : __moduleName,
+    moduleId: __moduleName,
     selector: 'my-heroes',
-    styleUrls  : [ 'heroes.component.css' ],
+    styleUrls: ['heroes.component.css'],
     templateUrl: 'heroes.component.html'
 });
 
 export class HeroesComponent {
-    constructor (router, heroService) {
+    constructor(router, heroService) {
         this.heroes = [];
         this.selectedHero;
 
@@ -20,18 +20,18 @@ export class HeroesComponent {
         this.heroService = heroService;
     }
 
-    ngOnInit () {
+    ngOnInit() {
         this.getHeroes();
     }
 
-    getHeroes () {
+    getHeroes() {
         this.heroService.getHeroes()
             .then(heroes => {
                 this.heroes = heroes;
             });
     }
 
-    onSelect (hero) {
+    onSelect(hero) {
         this.selectedHero = hero;
     }
 
@@ -41,4 +41,7 @@ export class HeroesComponent {
 }
 
 HeroesComponent.annotations = [componentDecorator];
-HeroesComponent.parameters  = [[Router], [HeroService]];
+HeroesComponent.parameters = [
+    [Router],
+    [HeroService]
+];

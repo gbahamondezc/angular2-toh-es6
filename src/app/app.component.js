@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 let componentAnnotation = new Component({
-    moduleId : __moduleName,
-    selector : 'my-app',
-    template : `
+    moduleId: __moduleName,
+    selector: 'my-app',
+    template: `
         <h1>{{title}}</h1>
         <nav>
             <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
@@ -15,8 +15,8 @@ let componentAnnotation = new Component({
 });
 
 export class AppComponent {
-    constructor () {
-        this.title  = 'Tour of Heroes';
+    constructor() {
+        this.title = 'Tour of Heroes';
     }
 }
 

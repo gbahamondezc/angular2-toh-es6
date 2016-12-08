@@ -2,23 +2,23 @@ import { Component } from '@angular/core';
 import { HeroService } from '../heroes/hero.service';
 
 
-let componentDecorator  = new Component({
-    moduleId : __moduleName,
-    selector : 'my-dashboard',
-    templateUrl : 'dashboard.component.html',
-    providers : [
+let componentDecorator = new Component({
+    moduleId: __moduleName,
+    selector: 'my-dashboard',
+    templateUrl: 'dashboard.component.html',
+    providers: [
         HeroService
     ],
-    styleUrls : [ 'dashboard.component.css' ]
+    styleUrls: ['dashboard.component.css']
 });
 
 
 export class DashboardComponent {
-    constructor (heroService) {
+    constructor(heroService) {
         this.heroService = heroService;
     }
 
-    ngOnInit () {
+    ngOnInit() {
         this.heroService.getPost()
             .then(posts => {
                 console.log('posts ', posts);
@@ -29,7 +29,9 @@ export class DashboardComponent {
                 this.heroes = heroes.slice(1, 5);
             });
     }
- }
+}
 
 DashboardComponent.annotations = [componentDecorator];
-DashboardComponent.parameters  = [[HeroService]];
+DashboardComponent.parameters = [
+    [HeroService]
+];

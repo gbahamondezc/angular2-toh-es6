@@ -4,11 +4,11 @@ import 'rxjs/add/operator/toPromise';
 import { HEROES } from './mock-heroes';
 
 export class HeroService {
-    constructor (http) {
+    constructor(http) {
         this.http = http;
     }
 
-    getHeroes () {
+    getHeroes() {
         return new Promise((resolve, reject) => {
             setTimeout(function() {
                 resolve(HEROES);
@@ -16,7 +16,7 @@ export class HeroService {
         });
     }
 
-    getHero (id) {
+    getHero(id) {
         return this.getHeroes()
             .then(heroes => heroes.find(hero => hero.id === id));
     }
@@ -30,4 +30,6 @@ export class HeroService {
     }
 }
 
-HeroService.parameters = [[Http]];
+HeroService.parameters = [
+    [Http]
+];
