@@ -17,7 +17,8 @@ gulp.task('watch', () => {
 gulp.task('serve', () => {
     serve.init({
         server: {
-            baseDir: './'
+             baseDir: './',
+             index: './src/index.html'
         }
     });
 
