@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 let componentAnnotation = new Component({
+    moduleId : __moduleName,
     selector : 'my-app',
     template : `
         <h1>{{title}}</h1>
@@ -10,7 +11,7 @@ let componentAnnotation = new Component({
         </nav>
         <router-outlet></router-outlet>
     `,
-    styleUrls: ['app/app.component.css']
+    styleUrls: ['app.component.css']
 });
 
 export class AppComponent {

@@ -4,10 +4,11 @@ import { HeroService } from './hero.service';
 import  { Router } from '@angular/router';
 
 
-let componentAnnotation = new Component({
+let componentDecorator = new Component({
+    moduleId : __moduleName,
     selector: 'my-heroes',
-    styleUrls  : [ 'app/heroes.component.css' ],
-    templateUrl: '/app/heroes.component.html'
+    styleUrls  : [ 'heroes.component.css' ],
+    templateUrl: 'heroes.component.html'
 });
 
 export class HeroesComponent {
@@ -39,5 +40,5 @@ export class HeroesComponent {
     }
 }
 
-HeroesComponent.annotations = [componentAnnotation];
+HeroesComponent.annotations = [componentDecorator];
 HeroesComponent.parameters  = [[Router], [HeroService]];

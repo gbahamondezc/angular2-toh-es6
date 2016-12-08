@@ -5,11 +5,12 @@ import { Location } from '@angular/common';
 import { HeroService } from './hero.service';
 import 'rxjs/add/operator/switchMap';
 
-let componentAnnotations = new Component({
+let componentDecorator = new Component({
+    moduleId : __moduleName,
     selector: 'my-hero-detail',
     inputs : ['hero'],
-    templateUrl : '/app/hero-detail.component.html',
-    styleUrls : ['app/hero-detail.component.css']
+    templateUrl : 'hero-detail.component.html',
+    styleUrls : ['hero-detail.component.css']
 });
 
 export class HeroDetailComponent {
@@ -30,7 +31,7 @@ export class HeroDetailComponent {
     }
 }
 
-HeroDetailComponent.annotations = [componentAnnotations];
+HeroDetailComponent.annotations = [componentDecorator];
 HeroDetailComponent.parameters = [
     [HeroService], [ActivatedRoute],
     [Location]

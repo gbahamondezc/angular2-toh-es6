@@ -3,13 +3,13 @@ import { HeroService } from './hero.service';
 
 
 let componentDecorator  = new Component({
+    moduleId : __moduleName,
     selector : 'my-dashboard',
-    templateUrl : '/app/dashboard.component.html',
+    templateUrl : 'dashboard.component.html',
     providers : [
         HeroService
-    ]
-    ,
-    styleUrls : [ 'app/dashboard.component.css' ]
+    ],
+    styleUrls : [ 'dashboard.component.css' ]
 });
 
 
@@ -19,6 +19,11 @@ export class DashboardComponent {
     }
 
     ngOnInit () {
+        this.heroService.getPost()
+            .then(posts => {
+                console.log('posts ', posts);
+            });
+
         this.heroService.getHeroes()
             .then(heroes => {
                 this.heroes = heroes.slice(1, 5);

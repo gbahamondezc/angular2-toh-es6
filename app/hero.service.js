@@ -1,9 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
 import { HEROES } from './mock-heroes';
 
-let serviceAnnotations = new Injectable();
-
 export class HeroService {
+    constructor (http) {
+        this.http = http;
+    }
+
     getHeroes () {
         return new Promise((resolve, reject) => {
             setTimeout(function() {
@@ -16,6 +20,14 @@ export class HeroService {
         return this.getHeroes()
             .then(heroes => heroes.find(hero => hero.id === id));
     }
+
+    getPost() {
+        return this.http.get('https://jsonplaceholder.typicode.com/posts')
+            .toPromise()
+            .then(response => {
+                return response.json();
+            });
+    }
 }
 
-serviceAnnotations.annotations = [serviceAnnotations];
+HeroService.parameters = [[Http]];
